@@ -42,6 +42,6 @@
 │   ├── pages // include api routes (login, logout)
 │   ├── styles
 │   ├── utils
-│   ├── views // define all pages
+│   └── views // define all pages
 └── README.md
 ```
