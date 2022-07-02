@@ -39,7 +39,7 @@
 │   ├── constants
 │   ├── core
 │   ├── layouts
-│   ├── pages // include api routes (login, logout)
+│   ├── pages // include api routes (login, logout, verifyAuth)
 │   ├── styles
 │   ├── utils
 │   └── views // define all pages
