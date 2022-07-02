@@ -9,7 +9,7 @@ interface LogoutData {
 }
 
 const logout = async () => {
-  const data: LogoutData = await axiosClient.post('logout');
+  const data: LogoutData = await axiosClient.get('logout');
 
   if (data.success) Router.push(ROUTES.LOGIN);
 };
