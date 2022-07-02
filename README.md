@@ -29,3 +29,19 @@
 ```sh
   yarn dev
 ```
+
+## **Structure source 🥘**
+
+```
+├── src
+│   ├── apis
+│   ├── configs
+│   ├── constants
+│   ├── core
+│   ├── layouts
+│   ├── pages // include api routes (login, logout)
+│   ├── styles
+│   ├── utils
+│   ├── views // define all pages
+└── README.md
+```
