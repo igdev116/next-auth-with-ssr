@@ -46,7 +46,7 @@ const withRoute: WithRouteProps = (options) => (callback) => {
     }
 
     // Redirect back if try to login when authenticated
-    if (!isProtected && token)
+    if (!isProtected)
       return {
         redirect: {
           destination: prev_url ?? ROUTES.HOME,
@@ -54,19 +54,17 @@ const withRoute: WithRouteProps = (options) => (callback) => {
         },
       };
 
-    if (isProtected) {
-      // Invalid token
-      if (!isTokenValid(token)) {
-        deleteCookie(res, FAKE_TOKEN.KEY);
+    // Invalid token
+    if (!isTokenValid(token)) {
+      deleteCookie(res, FAKE_TOKEN.KEY);
 
-        return redirectResult;
-      }
-
-      setCookie(res, {
-        key: PREV_URL_KEY,
-        value: resolvedUrl,
-      });
+      return redirectResult;
     }
+
+    setCookie(res, {
+      key: PREV_URL_KEY,
+      value: resolvedUrl,
+    });
 
     if (!callback)
       return {
