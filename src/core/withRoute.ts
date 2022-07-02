@@ -6,7 +6,8 @@ import {
 } from 'next';
 
 import { ROUTES, FAKE_TOKEN, PREV_URL_KEY } from '~/constants';
-import { deleteCookie, setCookie, isTokenValid } from '~/utils';
+import { deleteCookie, setCookie } from '~/utils';
+import { axiosServer } from '~/apis';
 
 interface WrapperOptions {
   isProtected: boolean;
@@ -17,6 +18,10 @@ type WithRouteProps = <P extends Record<string, unknown> = Record<string, unknow
 ) => (
   callback?: GetServerSideProps<P>,
 ) => (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<P>>;
+
+interface VerifyAuthData {
+  success: boolean;
+}
 
 const withRoute: WithRouteProps = (options) => (callback) => {
   return async (ctx) => {
@@ -54,8 +59,10 @@ const withRoute: WithRouteProps = (options) => (callback) => {
         },
       };
 
+    const verifyAuthData: VerifyAuthData = await axiosServer(ctx).get('verifyAuth');
+
     // Invalid token
-    if (!isTokenValid(token)) {
+    if (!verifyAuthData.success) {
       deleteCookie(res, FAKE_TOKEN.KEY);
 
       return redirectResult;

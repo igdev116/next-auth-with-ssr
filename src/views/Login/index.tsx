@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import Router from 'next/router';
 
 import { FAKE_USER, ROUTES } from '~/constants';
-import axiosClient from '~/apis/axiosClient';
+import { axiosClient } from '~/apis';
 
 import { Meta } from '~/layouts';
 import { Button, Form, H1, Input } from './styles';

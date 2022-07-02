@@ -9,11 +9,7 @@ type Data = {
 };
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse<Data>) {
-  try {
-    deleteCookie(res, FAKE_TOKEN.KEY);
+  deleteCookie(res, FAKE_TOKEN.KEY);
 
-    res.json({ success: true, message: 'Logout successfully' });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
+  res.json({ success: true, message: 'Logout successfully' });
 }

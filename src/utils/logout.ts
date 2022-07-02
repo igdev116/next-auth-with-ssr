@@ -1,6 +1,7 @@
 import Router from 'next/router';
-import axiosClient from '~/apis/axiosClient';
+
 import { ROUTES } from '~/constants';
+import { axiosClient } from '~/apis';
 
 interface LogoutData {
   success: boolean;
